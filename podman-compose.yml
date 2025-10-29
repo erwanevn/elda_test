@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+    db:
+        image: postgres:16
+        container_name: elda-postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: elda
+            POSTGRES_PASSWORD: elda123
+            POSTGRES_DB: ELDA_TEST
+        ports:
+            - '5432:5432'
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
