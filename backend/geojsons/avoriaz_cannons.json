@@ -1,0 +1,285 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.787917370053818, 46.200222155921615]
+			},
+			"properties": {
+				"id": 1,
+				"numero_regard": 112,
+				"secteur": 1275,
+				"type": "lance",
+				"nom_piste": "DRAYE"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.787660838628758, 46.199563221526695]
+			},
+			"properties": {
+				"id": 2,
+				"numero_regard": 111,
+				"secteur": 1275,
+				"type": "lance",
+				"nom_piste": "DRAYE"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.774089259943729, 46.195926436296801]
+			},
+			"properties": {
+				"id": 3,
+				"numero_regard": 14,
+				"secteur": 1275,
+				"type": "lance",
+				"nom_piste": "PISTE 14"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.777762320600778, 46.196017399456714]
+			},
+			"properties": {
+				"id": 4,
+				"numero_regard": 17,
+				"secteur": 1280,
+				"type": "lance",
+				"nom_piste": "PISTE 17"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.77481903231747, 46.1950207837005]
+			},
+			"properties": {
+				"id": 5,
+				"numero_regard": 12,
+				"secteur": 1280,
+				"type": "lance",
+				"nom_piste": "PISTE 12"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.773419317036549, 46.195949949423607]
+			},
+			"properties": {
+				"id": 6,
+				"numero_regard": 84,
+				"secteur": 1285,
+				"type": "lance",
+				"nom_piste": "PISTE 84"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.757428091622488, 46.184309491883106]
+			},
+			"properties": {
+				"id": 7,
+				"numero_regard": 232,
+				"secteur": 1285,
+				"type": "lance",
+				"nom_piste": "DEGAZEUR"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.778636324390192, 46.196287279322718]
+			},
+			"properties": {
+				"id": 8,
+				"numero_regard": 18,
+				"secteur": 1290,
+				"type": "lance",
+				"nom_piste": "PISTE 18"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.753673972496448, 46.188389036156906]
+			},
+			"properties": {
+				"id": 9,
+				"numero_regard": 240,
+				"secteur": 1290,
+				"type": "lance",
+				"nom_piste": "SECTEUR 240"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.77153263965261, 46.195855727814596]
+			},
+			"properties": {
+				"id": 10,
+				"numero_regard": 63,
+				"secteur": 1295,
+				"type": "lance",
+				"nom_piste": "SECTEUR 63"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.78033778110408, 46.198039215144902]
+			},
+			"properties": {
+				"id": 11,
+				"numero_regard": 22,
+				"secteur": 1295,
+				"type": "lance",
+				"nom_piste": "PISTE 22"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.773201763148961, 46.19446291673281]
+			},
+			"properties": {
+				"id": 12,
+				"numero_regard": 57,
+				"secteur": 1300,
+				"type": "lance",
+				"nom_piste": "SECTEUR 57"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.76958806284043, 46.185256553645196]
+			},
+			"properties": {
+				"id": 13,
+				"numero_regard": 301,
+				"secteur": 1300,
+				"type": "autonome",
+				"nom_piste": "SECTEUR 301"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.768526454372002, 46.182215549877611]
+			},
+			"properties": {
+				"id": 14,
+				"numero_regard": 306,
+				"secteur": 1305,
+				"type": "lance",
+				"nom_piste": "SECTEUR 306"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.77297116593708, 46.196645473817597]
+			},
+			"properties": {
+				"id": 15,
+				"numero_regard": 6,
+				"secteur": 1305,
+				"type": "lance",
+				"nom_piste": "PISTE 6"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.78042754219482, 46.197285445722706]
+			},
+			"properties": {
+				"id": 16,
+				"numero_regard": 21,
+				"secteur": 1310,
+				"type": "lance",
+				"nom_piste": "PISTE 21"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.772355123392281, 46.195306177398805]
+			},
+			"properties": {
+				"id": 17,
+				"numero_regard": 61,
+				"secteur": 1310,
+				"type": "lance",
+				"nom_piste": "SECTEUR 61"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.772797577701758, 46.195414092171099]
+			},
+			"properties": {
+				"id": 18,
+				"numero_regard": 60,
+				"secteur": 1315,
+				"type": "lance",
+				"nom_piste": "SECTEUR 60"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.775931696888698, 46.1944649002521]
+			},
+			"properties": {
+				"id": 19,
+				"numero_regard": 11,
+				"secteur": 1315,
+				"type": "tour",
+				"nom_piste": "PISTE 11"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.755942905862389, 46.186400603722504]
+			},
+			"properties": {
+				"id": 20,
+				"numero_regard": 236,
+				"secteur": 1320,
+				"type": "tour",
+				"nom_piste": "SECTEUR 236"
+			}
+		}
+	]
+}
