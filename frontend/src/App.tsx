@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl'
 import { mapConfig } from './config/mapConfig'
 import { useMap } from './hooks/useMap'
 import { useMapStore } from './stores/useMapStore'
-import { useEffect } from 'react'
+import Panel from './components/panels/Panel'
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN as string
 
@@ -106,12 +106,11 @@ const App = () => {
 		})
 	}
 
-	useEffect(() => {
-		console.log(selectedId)
-	}, [selectedId])
-
 	return (
-		<div style={{ height: '100vh', width: '100%' }}>
+		<div className="h-screen w-full">
+			<div className="absolute border-20 h-full w-full">
+				<Panel />
+			</div>
 			<Map
 				ref={mapRef as any}
 				onLoad={handleLoad}

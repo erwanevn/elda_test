@@ -69,6 +69,7 @@ export function useMap() {
 	const setBounds = useCallback((bounds: BBox, padding = 20) => {
 		const map = mapRef.current
 
+		console.log(map)
 		if (!map) return
 
 		map.setMaxBounds(bounds)
@@ -102,6 +103,18 @@ export function useMap() {
 		if (src) src.setData(data as any)
 	}, [])
 
+	const focusOnPoint = useCallback(
+		(point: [number, number]) => {
+			const map = mapRef.current
+
+			console.log(map)
+			if (!map) return () => {}
+
+			map.easeTo({ center: point, zoom: 13 })
+		},
+		[mapRef.current]
+	)
+
 	return {
 		mapRef,
 		setMapInstance,
@@ -112,5 +125,6 @@ export function useMap() {
 		setCursorOnHover,
 		setBounds,
 		setGeoJSONData,
+		focusOnPoint,
 	}
 }
