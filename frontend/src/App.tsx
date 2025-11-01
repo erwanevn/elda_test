@@ -1,9 +1,9 @@
+// App.tsx
 import 'mapbox-gl/dist/mapbox-gl.css'
 import Map from 'react-map-gl/mapbox'
 import mapboxgl from 'mapbox-gl'
 
 import { mapConfig } from './config/mapConfig'
-import { useMap } from './hooks/useMap'
 import { useMapStore } from './stores/useMapStore'
 import Panel from './components/panels/Panel'
 
@@ -16,28 +16,26 @@ const BOUNDS: [[number, number], [number, number]] = [
 ]
 
 const App = () => {
-	// Stores
-	const { loadSnowCannons, setSelectedId, selectedId } = useMapStore()
-
-	// Hooks
-	const {
-		mapRef,
-		setMapInstance,
-		addSourceOnce,
-		addLayerOnce,
-		onLayerClick,
-		onMapClickOutsideLayer,
-		setCursorOnHover,
-		setBounds,
-	} = useMap()
+	const setMap = useMapStore(s => s.setMap)
+	const whenReady = useMapStore(s => s.whenReady)
+	const addSourceOnce = useMapStore(s => s.addSourceOnce)
+	const addLayerOnce = useMapStore(s => s.addLayerOnce)
+	const onLayerClick = useMapStore(s => s.onLayerClick)
+	const onMapClickOutsideLayer = useMapStore(s => s.onMapClickOutsideLayer)
+	const setCursorOnHover = useMapStore(s => s.setCursorOnHover)
+	const setBounds = useMapStore(s => s.setBounds)
+	const loadSnowCannons = useMapStore(s => s.loadSnowCannons)
+	const setSelectedId = useMapStore(s => s.setSelectedId)
 
 	const handleLoad = async (e: any) => {
-		setMapInstance(e.target)
-		setBounds(BOUNDS, 20)
+		setMap(e.target)
+
+		whenReady(map => {
+			setBounds(BOUNDS, 20)
+		})
 
 		// Data
 		const data = await loadSnowCannons()
-
 		if (!data) return
 
 		// Cannons source
@@ -111,8 +109,8 @@ const App = () => {
 			<div className="absolute border-20 h-full w-full">
 				<Panel />
 			</div>
+
 			<Map
-				ref={mapRef as any}
 				onLoad={handleLoad}
 				mapboxAccessToken={mapboxgl.accessToken as string}
 				initialViewState={{
@@ -123,7 +121,7 @@ const App = () => {
 				minZoom={mapConfig.zoom.min}
 				maxZoom={mapConfig.zoom.max}
 				maxBounds={BOUNDS}
-				dragPan={true}
+				dragPan
 				mapStyle="mapbox://styles/mapbox/dark-v11"
 			/>
 		</div>

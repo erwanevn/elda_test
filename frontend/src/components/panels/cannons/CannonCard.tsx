@@ -1,5 +1,6 @@
 import { MouseEvent, useMemo } from 'react'
 import { useMap } from '../../../hooks/useMap'
+import { useMapStore } from '../../../stores/useMapStore'
 
 type Props = { data: any }
 
@@ -26,8 +27,8 @@ const CannonCard = ({ data }: Props) => {
 		latest_measurement: { conso_eau_m3, objectif_mini_m3, objectif_max_m3 },
 	} = data
 
-	// Hooks
-	const { focusOnPoint } = useMap()
+	// Stores
+	const { focusOnPoint } = useMapStore()
 
 	const per = useMemo(() => {
 		if (!objectif_max_m3 || !isFinite(objectif_max_m3)) return 0
@@ -40,7 +41,7 @@ const CannonCard = ({ data }: Props) => {
 	const color = useMemo(() => getColorFromState(per), [per])
 
 	const handleClick = (e: MouseEvent<HTMLDivElement>) => {
-		focusOnPoint([latitude, longitude])
+		focusOnPoint([longitude, latitude], 17)
 	}
 
 	return (
