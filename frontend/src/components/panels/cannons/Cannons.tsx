@@ -15,6 +15,7 @@ const Cannons = ({}: Props) => {
 	// States
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [search, setSearch] = useState('')
+	const [range, setRange] = useState<[number, number]>([0, 3000])
 	const [filters, setFilters] = useState<FiltersValue>({
 		types: [],
 		sectors: [],
@@ -56,10 +57,12 @@ const Cannons = ({}: Props) => {
 			const bySearch = normalizedSearch.length === 0 || c.nom_piste?.toLowerCase().includes(normalizedSearch)
 			const byType = filters.types.length === 0 || filters.types.includes(c.type)
 			const bySector = filters.sectors.length === 0 || filters.sectors.includes(c.secteur)
+			const byRange =
+				c.latest_measurement.objectif_mini_m3 >= range[0] && c.latest_measurement.objectif_max_m3 <= range[1]
 
-			return bySearch && byType && bySector
+			return bySearch && byType && bySector && byRange
 		})
-	}, [cannons, search, filters])
+	}, [cannons, search, filters, range])
 
 	return (
 		<div className="flex flex-col h-full min-h-0 gap-3 mt-5">
@@ -96,7 +99,7 @@ const Cannons = ({}: Props) => {
 				<Button label="Filtres" handler={() => setIsOpen(!isOpen)} />
 			</div>
 
-			<Filters isOpen={isOpen} value={filters} onChange={setFilters} />
+			<Filters isOpen={isOpen} value={filters} onChange={setFilters} range={range} setRange={setRange} />
 
 			{filteredCannons && cannons && filteredCannons.length < cannons.length && (
 				<h1 className="text-white text-center text-lg">
