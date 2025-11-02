@@ -1,6 +1,6 @@
 import { MouseEvent, useMemo } from 'react'
-import { useMap } from '../../../hooks/useMap'
 import { useMapStore } from '../../../stores/useMapStore'
+import { clamp } from '../../../utils/math'
 
 type Props = { data: any }
 
@@ -12,12 +12,11 @@ const COLOR_THRESHOLDS = [
 	{ limit: Infinity, color: 'e74c3c' },
 ]
 
-const getColorFromState = (v: number): string => COLOR_THRESHOLDS.find(t => v < t.limit)?.color ?? '#e74c3c'
-
-const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n))
+export const getColorFromState = (v: number): string => COLOR_THRESHOLDS.find(t => v < t.limit)?.color ?? '#e74c3c'
 
 const CannonCard = ({ data }: Props) => {
 	const {
+		id,
 		numero_regard,
 		secteur,
 		nom_piste,
@@ -28,7 +27,9 @@ const CannonCard = ({ data }: Props) => {
 	} = data
 
 	// Stores
-	const { focusOnPoint } = useMapStore()
+	const focusOnPoint = useMapStore(s => s.focusOnPoint)
+	const setSelectedId = useMapStore(s => s.setSelectedId)
+	const selectedId = useMapStore(s => s.selectedId)
 
 	const per = useMemo(() => {
 		if (!objectif_max_m3 || !isFinite(objectif_max_m3)) return 0
@@ -42,11 +43,12 @@ const CannonCard = ({ data }: Props) => {
 
 	const handleClick = (e: MouseEvent<HTMLDivElement>) => {
 		focusOnPoint([longitude, latitude], 17)
+		setSelectedId(id)
 	}
 
 	return (
 		<div
-			className="min-h-30 rounded-2xl bg-[#101010cc] text-white p-3 border-transparent cursor-pointer transition hover:border-2 hover:border-white"
+			className={`min-h-30 rounded-2xl bg-[#101010cc] text-white p-3 cursor-pointer transition hover:border-2 border-white ${id === selectedId && 'border-dashed border-3 hover:border-3'}`}
 			onClick={handleClick}
 		>
 			<div className="flex justify-between">

@@ -8,3 +8,15 @@ body {
 .mapboxgl-ctrl-bottom-right {
 	display: none !important;
 }
+
+.mapboxgl-popup {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.mapboxgl-popup-content {
+	border-radius: 16px !important;
+	padding: 5px !important;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+	width: 350px !important;
+}

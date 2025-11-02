@@ -55,7 +55,20 @@ export const useMapStore = create<MapState>((set, get) => ({
 	},
 
 	selectedId: null,
-	setSelectedId: selectedId => set({ selectedId }),
+	setSelectedId: (id: string | null) => {
+		const map = get().map
+		const prev = get().selectedId
+		set({ selectedId: id })
+
+		if (!map || !map.getSource('snowCannons')) return
+
+		if (prev != null) {
+			map.setFeatureState({ source: 'snowCannons', id: prev }, { selected: false })
+		}
+		if (id != null) {
+			map.setFeatureState({ source: 'snowCannons', id }, { selected: true })
+		}
+	},
 
 	addSourceOnce: (id, source) => {
 		const map = get().map
