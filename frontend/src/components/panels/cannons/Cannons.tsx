@@ -4,6 +4,7 @@ import { useCannonsStore } from '../../../stores/useCannonsStore'
 import CannonCard from './CannonCard'
 import Button from '../../ui/Button'
 import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg'
+import Filters, { FiltersValue } from './Filters'
 
 type Props = {}
 
@@ -12,8 +13,12 @@ const Cannons = ({}: Props) => {
 	const { cannons, loadCannons } = useCannonsStore()
 
 	// States
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [search, setSearch] = useState('')
-	const [filteredCannons, setFilteredCannons] = useState<any | null>(null)
+	const [filters, setFilters] = useState<FiltersValue>({
+		types: [],
+		sectors: [],
+	})
 
 	// Load cannons
 	useEffect(() => {
@@ -42,16 +47,19 @@ const Cannons = ({}: Props) => {
 		{ value: `${(stats.conso / 1000).toFixed(1)} m3`, label: 'Conso' },
 	]
 
-	useEffect(() => {
-		if (!cannons) return
+	const filteredCannons = useMemo(() => {
+		if (!cannons) return []
 
-		if (!search.trim()) {
-			setFilteredCannons(cannons)
-		} else {
-			const filtered = cannons.filter((c: any) => c.nom_piste?.toLowerCase().includes(search.toLowerCase()))
-			setFilteredCannons(filtered)
-		}
-	}, [search, cannons])
+		const normalizedSearch = search.trim().toLowerCase()
+
+		return cannons.filter((c: any) => {
+			const bySearch = normalizedSearch.length === 0 || c.nom_piste?.toLowerCase().includes(normalizedSearch)
+			const byType = filters.types.length === 0 || filters.types.includes(c.type)
+			const bySector = filters.sectors.length === 0 || filters.sectors.includes(c.secteur)
+
+			return bySearch && byType && bySector
+		})
+	}, [cannons, search, filters])
 
 	return (
 		<div className="flex flex-col h-full min-h-0 gap-3 mt-5">
@@ -85,8 +93,10 @@ const Cannons = ({}: Props) => {
 					/>
 					<SearchIcon className="absolute h-6 w-6 stroke-1 stroke-white right-5" />
 				</div>
-				<Button label="Filtres" handler={() => console.log('test')} />
+				<Button label="Filtres" handler={() => setIsOpen(!isOpen)} />
 			</div>
+
+			<Filters isOpen={isOpen} value={filters} onChange={setFilters} />
 
 			{filteredCannons && cannons && filteredCannons.length < cannons.length && (
 				<h1 className="text-white text-center text-lg">
