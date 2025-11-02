@@ -280,6 +280,20 @@
 				"type": "tour",
 				"nom_piste": "SECTEUR 236"
 			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [6.7766219047566665, 46.18927916948431]
+			},
+			"properties": {
+				"id": 21,
+				"numero_regard": 666,
+				"secteur": 20,
+				"type": "tour",
+				"nom_piste": "TEST"
+			}
 		}
 	]
 }
